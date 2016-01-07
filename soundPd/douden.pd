@@ -1,0 +1,112 @@
+#N canvas 401 62 866 698 10;
+#X obj 56 91 OSCroute /digital;
+#X obj 465 127 soundfiler;
+#X obj 457 31 loadbang;
+#X msg 459 56 read -resize ta.wav ta \, read -resize tuk.wav tuk \,
+read -resize wee.wav wee \, read -resize mel1.wav mel1 \, read -resize
+mel2.wav mel21 \, read -resize mel3.wav mel3;
+#X obj 177 122 print;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array ta 176401 float 2;
+#X coords 0 1 176401 -1 200 140 1;
+#X restore 68 377 graph;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array tuk 176401 float 2;
+#X coords 0 1 176401 -1 200 140 1;
+#X restore 287 376 graph;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array wee 176401 float 2;
+#X coords 0 1 176401 -1 200 140 1;
+#X restore 505 374 graph;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array mel1 176401 float 2;
+#X coords 0 1 176401 -1 200 140 1;
+#X restore 69 539 graph;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array mel21 176401 float 2;
+#X coords 0 1 176401 -1 200 140 1;
+#X restore 289 537 graph;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array mel3 176401 float 2;
+#X coords 0 1 176401 -1 200 140 1;
+#X restore 505 537 graph;
+#X obj 439 335 dac~;
+#X obj 79 215 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 175 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 262 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 55 128 OSCroute /pin;
+#X obj 56 50 dumpOSC 11112;
+#X obj 364 208 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 456 207 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 550 207 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 56 159 route 0 1 2 3 4 5;
+#X obj 82 241 tabplay~ ta;
+#X obj 178 244 tabplay~ tuk;
+#X obj 271 241 tabplay~ wee;
+#X obj 367 240 tabplay~ mel1;
+#X obj 558 242 tabplay~ mel3;
+#X obj 459 239 tabplay~ mel21;
+#X obj 287 95 change;
+#X obj 9 220 metro 1000;
+#X obj 2 199 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 660 178 line~;
+#X msg 656 147 0 \, 1000 \, 1000;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array myVoice 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 99 -1 200 140 1;
+#X restore 724 366 graph;
+#X obj 665 270 *~ 1;
+#X obj 660 217 tabplay~ ta;
+#X obj 771 213 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 200 1;
+#X obj 635 196 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 107 297 dac~;
+#X connect 0 0 4 0;
+#X connect 0 0 15 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 12 0 21 0;
+#X connect 13 0 22 0;
+#X connect 14 0 23 0;
+#X connect 15 0 20 0;
+#X connect 16 0 0 0;
+#X connect 17 0 24 0;
+#X connect 18 0 26 0;
+#X connect 19 0 25 0;
+#X connect 20 0 12 0;
+#X connect 20 1 13 0;
+#X connect 20 2 14 0;
+#X connect 20 3 17 0;
+#X connect 20 4 18 0;
+#X connect 20 5 19 0;
+#X connect 21 0 37 0;
+#X connect 21 0 37 1;
+#X connect 22 0 11 0;
+#X connect 22 0 11 1;
+#X connect 23 0 11 0;
+#X connect 23 0 11 1;
+#X connect 24 0 11 0;
+#X connect 24 0 11 1;
+#X connect 25 0 11 0;
+#X connect 25 0 11 1;
+#X connect 26 0 11 0;
+#X connect 26 0 11 1;
+#X connect 29 0 28 0;
+#X connect 31 0 30 0;
+#X connect 33 0 11 0;
+#X connect 33 0 11 1;
+#X connect 34 0 33 0;
+#X connect 35 0 33 1;
+#X connect 36 0 34 0;
